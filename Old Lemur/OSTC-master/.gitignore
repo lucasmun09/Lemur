@@ -1,0 +1,76 @@
+#Eclipse
+.cproject
+.project
+.settings
+
+#PlatformIO
+.pioenvs
+.travis.yml
+platformio.ini
+.piolibdeps
+
+#Doxygen generated files
+doc/generated
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# =========================
+# Operating System Files
+# =========================
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Windows shortcuts
+*.lnk
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+# =========================
+
+#KDE Dolphin
+*.directory
+
+#Temp
+.~*
+
+#Kate
+*.kate-swp
