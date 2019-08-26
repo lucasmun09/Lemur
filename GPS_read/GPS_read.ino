@@ -1,3 +1,4 @@
+// This is the GPS tester that decodes NMEA GPS communication
 #include "TinyGPS++.h"
 
 TinyGPSPlus tinyGPS; // Create a TinyGPSPlus object

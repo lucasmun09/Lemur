@@ -1,12 +1,20 @@
-// This is the version of the accelerometer code that I use for the New_Lemur
-// This keeps a lot of the depency stuff into seperate files so Arduino code doesn't look
-// cluttered. :)
+// Uses the SD card and Accelerometer (It Works!)
+// Save the accelerometer data into the SD card
 #include <Wire.h>
 #include "mpu6050.h"
+#include <SdFat.h>
+#include <SPI.h>
 
+struct lemur_data{
+  uint8_t node = 1;
+  uint32_t date_raw = 0;
+  uint32_t time_raw = 0;
+};
 
-// code from https://playground.arduino.cc/Main/MPU-6050
- 
+SdFat sd;
+SdFile myFile;
+const int chipSelect = 9;
+
 void setup()
 {      
   int error;
@@ -22,6 +30,10 @@ void setup()
   error = MPU6050_read (MPU6050_PWR_MGMT_1, &c, 1); 
   error = MPU6050_read (MPU6050_PWR_MGMT_1, &c, 1);
   MPU6050_write_reg (MPU6050_PWR_MGMT_1, 0);
+
+  if (!sd.begin(chipSelect, SPI_HALF_SPEED)) sd.initErrorHalt();
+
+  
 }
  
  
@@ -72,6 +84,13 @@ void loop()
   Serial.print(F(", "));
   Serial.print(total_acc, 4);
   Serial.println(F(""));
+
+  if (!myFile.open("test.txt", O_RDWR | O_CREAT | O_AT_END)) {
+    sd.errorHalt("opening test.txt for write failed");
+  }
+  myFile.println(total_acc, 4);
+  myFile.close();
+  Serial.println("done.");
   
  
  
